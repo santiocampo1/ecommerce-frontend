@@ -14,7 +14,7 @@ React frontend that demonstrates event-driven architecture integration with Nest
 ## Prerequisites
 
 - Node.js 18+ 
-- Backend running on http://localhost:3000
+- Backend running 
 
 ## Installation
 ```bash
