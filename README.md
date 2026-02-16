@@ -2,6 +2,12 @@
 
 React frontend that demonstrates event-driven architecture integration with NestJS backend.
 
+## 🌐 Live Demo
+
+**Frontend (Production):** https://ecommerce-frontend-three-virid.vercel.app
+
+**Backend API:** https://web-production-4dd7e.up.railway.app
+
 ## Features
 
 - 🔐 JWT Authentication
