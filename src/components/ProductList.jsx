@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getProduct } from '../services/api';
+import { getProduct, deleteProduct } from '../services/api';
 import InventoryBadge from './InventoryBadge';
 
 function ProductList({ refreshTrigger }) {
@@ -13,7 +13,7 @@ function ProductList({ refreshTrigger }) {
     const loadProducts = async () => {
         setLoading(true);
         const productPromises = [];
-        for (let i = 1; i <= 5; i++) {
+        for (let i = 1; i <= 10; i++) {
             productPromises.push(
                 getProduct(i).catch(() => null)
             );
@@ -26,6 +26,20 @@ function ProductList({ refreshTrigger }) {
 
         setProducts(validProducts);
         setLoading(false);
+    };
+
+    const handleDelete = async (productId) => {
+        if (!window.confirm('¿Eliminar este producto? Se emitirá el evento product.deleted')) {
+            return;
+        }
+
+        try {
+            await deleteProduct(productId);
+            alert('✅ Producto eliminado! Evento product.deleted emitido.');
+            loadProducts();
+        } catch (error) {
+            alert('Error al eliminar: ' + (error.response?.data?.message || error.message));
+        }
     };
 
     if (loading && products.length === 0) {
@@ -62,6 +76,18 @@ function ProductList({ refreshTrigger }) {
                             </span>
                             <span className="category">{product.category?.name}</span>
                         </div>
+
+                        <button
+                            onClick={() => handleDelete(product.id)}
+                            className="delete-btn"
+                            style={{
+                                marginTop: '1rem',
+                                width: '100%',
+                                background: '#dc3545',
+                            }}
+                        >
+                            🗑️ Delete Product
+                        </button>
                     </div>
                 ))}
             </div>

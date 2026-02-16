@@ -318,3 +318,13 @@ button[type="button"]:hover {
   padding: 2rem;
   color: #666;
 }
+
+.delete-btn {
+  margin-top: 1rem !important;
+  width: 100%;
+  background: #dc3545 !important;
+}
+
+.delete-btn:hover {
+  background: #c82333 !important;
+}
