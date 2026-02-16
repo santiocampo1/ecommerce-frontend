@@ -1,4 +1,3 @@
-cat > README.md << 'EOF'
 # E-Commerce Frontend - Event-Driven Demo
 
 React frontend that demonstrates event-driven architecture integration with NestJS backend.
